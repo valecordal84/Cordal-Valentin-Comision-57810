@@ -1,0 +1,8 @@
+<h2>Resultados de búsqueda para "{{ query }}"</h2>
+<ul>
+    {% for result in results %}
+        <li>{{ result.nombre }}</li>
+    {% empty %}
+        <li>No se encontraron resultados.</li>
+    {% endfor %}
+</ul>

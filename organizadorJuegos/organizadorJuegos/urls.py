@@ -63,6 +63,9 @@ urlpatterns = [
     path('editarPerfil', views.editarPerfil, name='editarPerfil'),
     path('1/password/', views.CambiarClave.as_view(template_name="webapp/cambiarClave.html"), name='cambiarClave'),
     path('agregarAvatar', views.agregarAvatar, name="agregarAvatar"),
+    
+    # Opcional
+    path('busquedaWL', views.busquedaWL, name='busquedaWL'),
 ]
 
 urlpatterns+= static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

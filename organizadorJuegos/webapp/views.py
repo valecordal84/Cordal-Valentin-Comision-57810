@@ -301,3 +301,14 @@ def agregarAvatar(request):
     else:
         miForm = AvatarForm()
     return render (request, "webapp/agregarAvatar.html", {"form":miForm})
+
+
+# Opcional
+
+def busquedaWL(request):
+    query = request.GET.get('q', '')
+    if query:
+        results = wishlist.objects.filter(nombre__icontains=query)
+    else:
+        results = wishlist.objects.none()
+    return render(request, 'webapp/busquedaWL.html', {'results': results, 'query': query})
