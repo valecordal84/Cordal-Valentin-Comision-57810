@@ -1,0 +1,81 @@
+{% extends "webapp/base.html" %}
+
+{% load static %}
+
+{% block contenido %}
+<table>
+
+    <tr>
+
+        <td width="200"><h2>Plataformas</h2></td>
+
+        <td>
+
+            <a
+
+            href="{% url 'jcForm' %}"
+
+            class="btn btn-primary btn-sm"
+
+            ><i class="fa fa-plus fa-lg" title="Crear"> </i>
+
+            </a>
+
+        </td>        
+
+    </tr>
+
+</table>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Plataforma</th>
+            <th>Precio</th>
+            <th>Multijugador</th>
+            <th>Solitario</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for j in juegosComprar %}
+        <tr>
+            <td>{{ j.nombre }}</td>
+            <td>{{ j.plataforma }}</td>
+            <td>{{ j.precio }}</td>
+            <td>{{ j.multijugador }}</td>
+            <td>{{ j.solitario }}</td>
+            <td>
+
+                <a
+
+                  href="{% url 'jcUpdate' j.nombre %}"
+
+                  class="btn btn-primary"
+
+                  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+
+                  ><i class="fa fa-edit fa-sm" title="Edit Record"></i>
+
+                </a>
+
+                <a
+
+                  href="{% url 'jcDelete' j.nombre %}"
+
+                  class="btn btn-danger"
+
+                  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+
+                  ><i class="fa fa-trash fa-sm" title="Delete Record"></i>
+
+                </a>                
+
+            </td>
+        </tr>
+        
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock contenido %}
