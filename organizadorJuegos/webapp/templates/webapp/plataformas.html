@@ -3,6 +3,10 @@
 {% load static %}
 
 {% block contenido %}
+<form method="GET" action="{% url 'busquedaPL' %}">
+    <input type="text" name="q" placeholder="Buscar...">
+    <button type="submit">🔍</button>
+</form>
 <table>
 
     <tr>

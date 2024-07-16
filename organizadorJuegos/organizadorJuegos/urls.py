@@ -66,6 +66,9 @@ urlpatterns = [
     
     # Opcional
     path('busquedaWL', views.busquedaWL, name='busquedaWL'),
+    path('busquedaPL', views.busquedaPL, name='busquedaPL'),
+    path('busquedaJC', views.busquedaJC, name='busquedaJC'),
+    path('busquedaJT', views.busquedaJT, name='busquedaJT'),
 ]
 
 urlpatterns+= static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

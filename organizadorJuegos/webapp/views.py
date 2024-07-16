@@ -304,11 +304,67 @@ def agregarAvatar(request):
 
 
 # Opcional
+"""
+@login_required
+def busquedaPL(request):
+    query = request.GET.get('q', '')
+    if query:
+        results = plataformas.objects.filter(nombrePlataforma__icontains=query)
+    else:
+        results = plataformas.objects.none()
+    return render(request, 'webapp/busquedaPL.html', {'results': results, 'query': query})
 
+@login_required
+def busquedaJC(request):
+    query = request.GET.get('q', '')
+    if query:
+        results = juegosComprar.objects.filter(nombre__icontains=query)
+    else:
+        results = juegosComprar.objects.none()
+    return render(request, 'webapp/busquedaJC.html', {'results': results, 'query': query})
+
+@login_required
+def busquedaJT(request):
+    query = request.GET.get('q', '')
+    if query:
+        results = juegosTerminados.objects.filter(nombre__icontains=query)
+    else:
+        results = juegosTerminados.objects.none()
+    return render(request, 'webapp/busquedaJT.html', {'results': results, 'query': query})
+"""
+
+@login_required
 def busquedaWL(request):
     query = request.GET.get('q', '')
     if query:
-        results = wishlist.objects.filter(nombre__icontains=query)
+        wishlist_items = wishlist.objects.filter(nombre__icontains=query)
     else:
-        results = wishlist.objects.none()
-    return render(request, 'webapp/busquedaWL.html', {'results': results, 'query': query})
+        wishlist_items = wishlist.objects.all()
+    return render(request, 'webapp/wishlist.html', {'wishlist': wishlist_items, 'query': query})
+
+@login_required
+def busquedaPL(request):
+    query = request.GET.get('q', '')
+    if query:
+        plataformas_items = plataformas.objects.filter(nombrePlataforma__icontains=query)
+    else:
+        plataformas_items = plataformas.objects.all()
+    return render(request, 'webapp/plataformas.html', {'plataformas': plataformas_items, 'query': query})
+
+@login_required
+def busquedaJC(request):
+    query = request.GET.get('q', '')
+    if query:
+        jc_items = juegosComprar.objects.filter(nombre__icontains=query)
+    else:
+        jc_items = juegosComprar.objects.all()
+    return render(request, 'webapp/juegosComprar.html', {'juegosComprar': jc_items, 'query': query})
+
+@login_required
+def busquedaJT(request):
+    query = request.GET.get('q', '')
+    if query:
+        jt_items = juegosTerminados.objects.filter(nombre__icontains=query)
+    else:
+        jt_items = juegosTerminados.objects.all()
+    return render(request, 'webapp/juegosTerminados.html', {'juegosTerminados': jt_items, 'query': query})
